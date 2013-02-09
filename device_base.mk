@@ -5,14 +5,16 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 # TODO: LtoDownloader
 
-$(call inherit-product-if-exists, vendor/acer/a700/a700-vendor.mk)
-
 PRODUCT_AAPT_CONFIG := normal large xlarge hdpi
 PRODUCT_AAPT_PREF_CONFIG := xlarge hdpi
 
-DEVICE_PACKAGE_OVERLAYS += device/acer/a700/overlay
+DEVICE_PACKAGE_OVERLAYS += device/acer/t30-common/overlay
 
 PRODUCT_PROPERTY_OVERRIDES := \
+    ro.opengles.version=131072 \
+    persist.tegra.nvmmlite=1 \
+    nvidia.hwc.mirror_mode=crop \
+    tf.enable=y \
     wifi.interface=wlan0 \
     ro.carrier=wifi-only
 
@@ -35,10 +37,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_COPY_FILES += \
-    device/acer/a700/prebuilt/ramdisk/init.picasso_mf.rc:root/init.picasso_mf.rc \
-    device/acer/a700/prebuilt/ramdisk/fstab.picasso_mf:root/fstab.picasso_mf \
-    device/acer/a700/prebuilt/ramdisk/ueventd.picasso_mf.rc:root/ueventd.picasso_mf.rc \
-    device/acer/a700/prebuilt/ramdisk/init.picasso_mf.usb.rc:root/init.picasso_mf.usb.rc \
+    device/acer/t30-common/prebuilt/ramdisk/init.target.rc:root/init.$(PRODUCT_BOOTLOADER).rc \
+    device/acer/t30-common/prebuilt/ramdisk/fstab.acer:root/fstab.acer \
+    device/acer/t30-common/prebuilt/ramdisk/ueventd.target.rc:root/ueventd.$(PRODUCT_BOOTLOADER).rc \
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
@@ -55,13 +56,13 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
 
 PRODUCT_COPY_FILES += \
-    device/acer/a700/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    device/acer/a700/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
-    device/acer/a700/prebuilt/usr/idc/acer-touch.idc:system/usr/idc/acer-touch.idc \
-    device/acer/a700/prebuilt/usr/keylayout/Acer-AK00LB.kl:system/usr/keylayout/Acer-AK00LB.kl \
-    device/acer/a700/prebuilt/usr/keylayout/Acer-ICONIA-TAB-KB01.kl:system/usr/keylayout/Acer-ICONIA-TAB-KB01.kl \
-    device/acer/a700/prebuilt/usr/keylayout/acer-dock.kl:system/usr/keylayout/acer-dock.kl \
-    device/acer/a700/prebuilt/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
+    device/acer/t30-common/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
+    device/acer/t30-common/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+    device/acer/t30-common/prebuilt/usr/idc/acer-touch.idc:system/usr/idc/acer-touch.idc \
+    device/acer/t30-common/prebuilt/usr/keylayout/Acer-AK00LB.kl:system/usr/keylayout/Acer-AK00LB.kl \
+    device/acer/t30-common/prebuilt/usr/keylayout/Acer-ICONIA-TAB-KB01.kl:system/usr/keylayout/Acer-ICONIA-TAB-KB01.kl \
+    device/acer/t30-common/prebuilt/usr/keylayout/acer-dock.kl:system/usr/keylayout/acer-dock.kl \
+    device/acer/t30-common/prebuilt/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 PRODUCT_PACKAGES := \
     audio.primary.tegra \
@@ -85,13 +86,13 @@ PRODUCT_PACKAGES += \
 
 # Audio config
 PRODUCT_COPY_FILES += \
-    device/acer/a700/tiny_hw.xml:system/etc/sound/picasso_mf \
-    device/acer/a700/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf
+    device/acer/t30-common/tiny_hw.xml:system/etc/sound/$(PRODUCT_BOOTLOADER) \
+    device/acer/t30-common/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf
 
 # media config xml file
 PRODUCT_COPY_FILES += \
-    device/acer/a700/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    device/acer/a700/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml
+    device/acer/t30-common/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    device/acer/t30-common/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml
 
 # Bluetooth config file
 PRODUCT_COPY_FILES += \
@@ -99,4 +100,3 @@ PRODUCT_COPY_FILES += \
 
 WIFI_BAND := 802_11_BG
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
-
