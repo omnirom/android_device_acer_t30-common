@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ajustes avanzados</string>
+    <string name="category_screen_title">Pantalla</string>
+    <string name="touch_sensitivity_head">Sensibilidad táctil</string>
+    <string name="touch_sensitivity_very_high">Muy alta</string>
+    <string name="touch_sensitivity_high">Alta</string>
+    <string name="touch_sensitivity_medium">Media</string>
+    <string name="touch_sensitivity_low">Baja</string>
+    <string name="category_power_title">Energía</string>
+    <string name="power_mode_head">Modo de energía</string>
+    <string name="power_mode_high">Alto rendimiento</string>
+    <string name="power_mode_medium">Equilibrado (recomendado)</string>
+    <string name="power_mode_low">Ahorro de energía</string>
+</resources>
