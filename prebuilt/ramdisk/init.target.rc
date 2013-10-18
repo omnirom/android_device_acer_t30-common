@@ -93,6 +93,9 @@ on boot
     chown system system /sys/Touch/filter
     restorecon /sys/Touch/sensitivity_raw
 
+    # Default to "very high" sensitivity
+    write /sys/Touch/sensitivity_raw 50
+
 # powerkey led
     chown system system /sys/class/leds/acer-leds/brightness
 
@@ -154,6 +157,7 @@ on boot
     chown system system /sys/dev-power_mode/power_mode
     restorecon /sys/dev-power_mode/power_mode
 
+    write /sys/dev-power_mode/power_mode 2
     write /sys/module/cpu_tegra/parameters/performance_mode 0
     write /sys/module/cpu_tegra/parameters/balanced_mode 1200000
     write /sys/module/cpu_tegra/parameters/powersaving_mode 1200000
@@ -317,3 +321,15 @@ on boot
 #     class late_start
 #     user system
 
+# Performance mode
+# Powersave
+on property:sys.cpu.mode=0
+    write /sys/dev-power_mode/power_mode 3
+
+# Balanced
+on property:sys.cpu.mode=1
+    write /sys/dev-power_mode/power_mode 2
+
+# Performance
+on property:sys.cpu.mode=2
+    write /sys/dev-power_mode/power_mode 1

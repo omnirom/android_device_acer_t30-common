@@ -81,10 +81,6 @@ PRODUCT_PACKAGES := \
 
 PRODUCT_CHARACTERISTICS := tablet
 
-# Device-specific packages
-PRODUCT_PACKAGES += \
-    DeviceParts
-
 # Audio config
 PRODUCT_COPY_FILES += \
     device/acer/t30-common/tiny_hw.xml:system/etc/sound/$(PRODUCT_BOOTLOADER) \
