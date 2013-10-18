@@ -36,9 +36,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
+# We copy fstab twice, fstab.acer for init, fstab.$(PRODUCT_BOOTLOADER) for vold
 PRODUCT_COPY_FILES += \
     device/acer/t30-common/prebuilt/ramdisk/init.target.rc:root/init.$(PRODUCT_BOOTLOADER).rc \
     device/acer/t30-common/prebuilt/ramdisk/fstab.acer:root/fstab.acer \
+    device/acer/t30-common/prebuilt/ramdisk/fstab.acer:root/fstab.$(PRODUCT_BOOTLOADER) \
     device/acer/t30-common/prebuilt/ramdisk/ueventd.target.rc:root/ueventd.$(PRODUCT_BOOTLOADER).rc \
 
 PRODUCT_COPY_FILES += \
@@ -56,7 +58,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
 
 PRODUCT_COPY_FILES += \
-    device/acer/t30-common/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
     device/acer/t30-common/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
     device/acer/t30-common/prebuilt/usr/idc/acer-touch.idc:system/usr/idc/acer-touch.idc \
     device/acer/t30-common/prebuilt/usr/keylayout/Acer-AK00LB.kl:system/usr/keylayout/Acer-AK00LB.kl \
