@@ -16,7 +16,8 @@ PRODUCT_PROPERTY_OVERRIDES := \
     nvidia.hwc.mirror_mode=crop \
     tf.enable=y \
     wifi.interface=wlan0 \
-    ro.carrier=wifi-only
+    ro.carrier=wifi-only \
+    ro.zygote.disable_gl_preload=true \
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -90,10 +91,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/acer/t30-common/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/acer/t30-common/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml
-
-# Bluetooth config file
-PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf \
 
 WIFI_BAND := 802_11_BG
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)

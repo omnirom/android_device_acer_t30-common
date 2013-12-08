@@ -58,7 +58,13 @@ BOARD_BLUEDROID_VENDOR_CONF := device/acer/t30-common/libbt_vndcfg.txt
 
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/acer/t30-common/prebuilt/etc/egl.cfg
-BOARD_EGL_NEEDS_LEGACY_FB := true
+BOARD_EGL_SKIP_FIRST_DEQUEUE := true
+BOARD_USE_MHEAP_SCREENSHOT := true
+BOARD_EGL_WORKAROUND_BUG_10194508 := true
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+
+# Sensors
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 # Use this flag if the board has a ext4 partition larger than 2gb
