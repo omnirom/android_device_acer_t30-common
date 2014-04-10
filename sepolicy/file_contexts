@@ -19,7 +19,6 @@
 
 /system/bin/glgps_nvidiaTegra2android              -- u:object_r:gpsd_exec:s0
 
-/sys/devices/system/cpu(/.*)?                     u:object_r:sysfs_devices_system_cpu:s0
 /sys/devices/tegradc\.0(/.*)?                u:object_r:sysfs_devices_tegradc:s0
 /sys/devices/tegradc\.1(/.*)?                u:object_r:sysfs_devices_tegradc:s0
 /sys/devices/platform/bcm4329_rfkill/rfkill/rfkill0/state   --  u:object_r:sysfs_bluetooth_writable:s0
