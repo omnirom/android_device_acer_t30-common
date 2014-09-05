@@ -76,9 +76,6 @@ BOARD_SUPPRESS_EMMC_WIPE := true
 # healthd
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.t30
 
-# CMHW
-BOARD_HARDWARE_CLASS := device/acer/t30-common/cmhw/
-
 # Selinux
 BOARD_SEPOLICY_DIRS += \
 	device/acer/t30-common/sepolicy
